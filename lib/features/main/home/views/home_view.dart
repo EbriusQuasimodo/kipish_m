@@ -6,6 +6,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
 import 'package:kipish_m/features/main/home/controllers/home_controller.dart';
 import 'package:kipish_m/features/main/home/widgets/home_pager.dart';
@@ -24,8 +25,8 @@ class HomeView extends GetView<HomeController> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           scrolledUnderElevation: 0,
-          backgroundColor: Colors.white,
-          title: Text(controller.title.value),
+          backgroundColor: theme.main_light,
+          title: Text(controller.title.value,style: TextStyle(color: theme.main_dark,fontSize:  controller.selected_item.value == Constants.CALENDAR ? 20:32,fontWeight: FontWeight.w400),),
         ),
         body: SafeArea(
           child: Column(
@@ -33,7 +34,7 @@ class HomeView extends GetView<HomeController> {
             children: [
               Expanded(
                 child: Container(
-                  color: Colors.white,
+                  color: theme.main_light,
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
@@ -51,65 +52,128 @@ class HomeView extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   controller.selectItem(Constants.CALENDAR);
                 },
                 child: Container(
                   height: 40,
-                  decoration: BoxDecoration(
-                      color: controller.selected_item.value == Constants.CALENDAR
-                          ? Colors.grey
-                          : Colors.transparent),
                   child: Column(
-                    children: [Icon(Icons.calendar_month,size: 16,), Text('Календарь',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),)],
+                    children: [
+                      Icon(
+                      TablerIcons.calendar_month,
+                        size: 16,
+                        color:
+                            controller.selected_item.value == Constants.CALENDAR
+                                ? theme.main_dark
+                                : theme.accent_color_dark,
+                      ),
+                      Text(
+                        'Календарь',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: controller.selected_item.value ==
+                                  Constants.CALENDAR
+                              ? theme.main_dark
+                              : theme.accent_color_dark,
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),
               GestureDetector(
-                 onTap: (){
+                onTap: () {
                   controller.selectItem(Constants.ROADMAPS);
                 },
                 child: Container(
                   height: 40,
-                  decoration: BoxDecoration(
-                      color: controller.selected_item.value == Constants.ROADMAPS
-                          ? Colors.grey
-                          : Colors.transparent),
                   child: Column(
-                    children: [Icon(Icons.add_road,size: 16,), Text('Дорожная карта',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),)],
+                    children: [
+                      Icon(
+                        Icons.add_road,
+                        size: 16,
+                        color:
+                            controller.selected_item.value == Constants.ROADMAPS
+                                ? theme.main_dark
+                                : theme.accent_color_dark,
+                      ),
+                      Text(
+                        'Дорожная карта',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: controller.selected_item.value ==
+                                  Constants.ROADMAPS
+                              ? theme.main_dark
+                              : theme.accent_color_dark,
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),
-               GestureDetector(
-                 onTap: (){
+              GestureDetector(
+                onTap: () {
                   controller.selectItem(Constants.PRIORITIES);
                 },
-                 child: Container(
+                child: Container(
                   height: 40,
-                  decoration: BoxDecoration(
-                      color: controller.selected_item.value == Constants.PRIORITIES
-                          ? Colors.grey
-                          : Colors.transparent),
                   child: Column(
-                    children: [Icon(Icons.menu,size: 16,), Text('Приоритеты',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),)],
+                    children: [
+                      Icon(
+                        Icons.menu,
+                        size: 16,
+                        color: controller.selected_item.value ==
+                                Constants.PRIORITIES
+                            ? theme.main_dark
+                            : theme.accent_color_dark,
+                      ),
+                      Text(
+                        'Приоритеты',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: controller.selected_item.value ==
+                                  Constants.PRIORITIES
+                              ? theme.main_dark
+                              : theme.accent_color_dark,
+                        ),
+                      )
+                    ],
                   ),
-                               ),
-               ),
-               GestureDetector(
-                 onTap: (){
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
                   controller.selectItem(Constants.NEWS);
                 },
-                 child: Container(
+                child: Container(
                   height: 40,
-                  decoration: BoxDecoration(
-                      color: controller.selected_item.value == Constants.NEWS
-                          ? Colors.grey
-                          : Colors.transparent),
                   child: Column(
-                    children: [Icon(Icons.newspaper,size: 16,), Text('Сообщество',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),)],
+                    children: [
+                      Icon(
+                        Icons.newspaper,
+                        size: 16,
+                        color: controller.selected_item.value == Constants.NEWS
+                            ? theme.main_dark
+                            : theme.accent_color_dark,
+                      ),
+                      Text(
+                        'Сообщество',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color:
+                              controller.selected_item.value == Constants.NEWS
+                                  ? theme.main_dark
+                                  : theme.accent_color_dark,
+                        ),
+                      )
+                    ],
                   ),
-                               ),
-               ),
+                ),
+              ),
             ],
           ),
         ),
