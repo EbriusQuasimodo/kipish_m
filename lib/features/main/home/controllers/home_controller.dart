@@ -3,17 +3,17 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:kipish_m/features/main/calendar/controllers/calendar_controller.dart';
 import 'package:kipish_m/utils/constants.dart';
 
-class HomeController extends GetxController{
-    Rx<int> selected_item = (-100).obs;
-      var title = "".obs;
-      Future deleteControllers() async {
-      //удаляем контроллеры каждой страницы
+class HomeController extends GetxController {
+  Rx<int> selected_item = (-100).obs;
+  var title = "".obs;
+  Future deleteControllers() async {
+    //удаляем контроллеры каждой страницы
     if (Get.isRegistered<CalendarController>()) {
       await Get.delete<CalendarController>();
     }
-   
   }
-     Future selectItem(p0) async {
+
+  Future selectItem(p0) async {
     await deleteControllers();
     selected_item.value = p0;
 
@@ -25,13 +25,14 @@ class HomeController extends GetxController{
       title.value = "Дорожные карты";
     }
   }
-getReady(){
-    selectItem(Constants.CALENDAR);
-}
 
-@override
+  getReady() {
+    selectItem(Constants.CALENDAR);
+  }
+
+  @override
   void onInit() {
-   getReady();
+    getReady();
     super.onInit();
   }
 }

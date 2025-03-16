@@ -5,25 +5,52 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppThemeData {
-  IconData icon;
   int index;
   String name;
-
+  int main_dark;
+  int main_light;
+  int accent_color;
+  int accent_color_light;
+  int accent_color_dark;
+  int accent_color_dark2;
   AppThemeData({
-    required this.icon,
     required this.index,
     required this.name,
-  
+    required this.main_light,
+    required this.main_dark,
+    required this.accent_color,
+    required this.accent_color_light,
+    required this.accent_color_dark,
+    required this.accent_color_dark2,
   });
 }
 
 class AppThemeController extends GetxController {
- ThemeData _setTheme() {
+   var themes = [AppThemeData(index: 0, name: 'Светлая', main_light: 0xFFFFFFFF, main_dark: 0xFF2B2B2B, accent_color: 0xFFE53838, accent_color_light: 0xFFF8F8F8, accent_color_dark: 0xFF8B8B8B, accent_color_dark2: 0xFFD9D9D9)].obs;
+   final _main_dark = Color(0x00000000).obs;
+   Color get main_dark => _main_dark.value;
+     final _main_light = Color(0x00000000).obs;
+   Color get main_light=> _main_light.value;
+     final _accent_color = Color(0x00000000).obs;
+   Color get accent_color => _accent_color.value;
+     final _accent_color_light = Color(0x00000000).obs;
+   Color get accent_color_light => _accent_color_light.value;
+     final _accent_color_dark = Color(0x00000000).obs;
+   Color get accent_color_dark => _accent_color_dark.value;
+     final _accent_color_dark2 = Color(0x00000000).obs;
+   Color get accent_color_dark2 => _accent_color_dark2.value;
+  ThemeData _setTheme(AppThemeData themeData) {
+       _main_dark.value = Color(themeData.main_dark);
+    _main_light.value = Color(themeData.main_light);
+    _accent_color.value = Color(themeData.accent_color);
+    _accent_color_light.value = Color(themeData.accent_color_light);
+    _accent_color_dark.value = Color(themeData.accent_color_dark);
+    _accent_color_dark2.value = Color(themeData.accent_color_dark2);
     final theme = ThemeData(
       useMaterial3: true,
       fontFamily: 'Inter',
-      canvasColor:  Colors.white,
-      scaffoldBackgroundColor:  Colors.white,
+      canvasColor: Colors.white,
+      scaffoldBackgroundColor: Colors.white,
       textTheme: const TextTheme(
         labelLarge: TextStyle(
           fontSize: 16,
@@ -63,9 +90,9 @@ class AppThemeController extends GetxController {
         ),
       ).apply(
         bodyColor: Colors.black,
-        displayColor:  Colors.black,
+        displayColor: Colors.black,
       ),
-      dividerTheme: DividerThemeData(color:  Colors.grey),
+      dividerTheme: DividerThemeData(color: Colors.grey),
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: Colors.grey,
       ),
@@ -79,30 +106,27 @@ class AppThemeController extends GetxController {
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         hintStyle: TextStyle(
-            fontSize: 16, color:  Colors.grey, fontWeight: FontWeight.w400),
+            fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w400),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color:  Colors.grey),
+          borderSide: BorderSide(color: Colors.grey),
           borderRadius: BorderRadius.circular(12),
         ),
-       
-        outlineBorder: BorderSide(color:  Colors.grey),
+        outlineBorder: BorderSide(color: Colors.grey),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color:  Colors.grey),
+          borderSide: BorderSide(color: Colors.grey),
           borderRadius: BorderRadius.circular(12),
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color:  Colors.grey),
+          borderSide: BorderSide(color: Colors.grey),
           borderRadius: BorderRadius.circular(12),
         ),
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color:  Colors.blue),
-            borderRadius: BorderRadius.circular(12),
-        
-         
+          borderSide: BorderSide(color: Colors.blue),
+          borderRadius: BorderRadius.circular(12),
         ),
         errorStyle: TextStyle(
-          color:  Colors.red,
-          decorationColor:  Colors.red,
+          color: Colors.red,
+          decorationColor: Colors.red,
           fontWeight: FontWeight.w400,
           fontSize: 14,
         ),
@@ -132,9 +156,9 @@ class AppThemeController extends GetxController {
         foregroundColor: WidgetStateProperty.resolveWith<Color?>(
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.pressed)) {
-              return  Colors.grey;
+              return Colors.grey;
             } else {
-              return  Colors.grey;
+              return Colors.grey;
             }
           },
         ),
@@ -146,31 +170,37 @@ class AppThemeController extends GetxController {
                     borderRadius: BorderRadius.circular(12)))
             .copyWith(
           overlayColor: WidgetStatePropertyAll(Colors.transparent),
-          backgroundColor: WidgetStatePropertyAll( Colors.white),
+          backgroundColor: WidgetStatePropertyAll(Colors.white),
           side: WidgetStateProperty.resolveWith<BorderSide?>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
-                return BorderSide(color:  Colors.grey, width: 1,strokeAlign: BorderSide.strokeAlignOutside);
+                return BorderSide(
+                    color: Colors.grey,
+                    width: 1,
+                    strokeAlign: BorderSide.strokeAlignOutside);
               } else {
-                return BorderSide(color:  Colors.grey, width: 1,strokeAlign: BorderSide.strokeAlignOutside);
+                return BorderSide(
+                    color: Colors.grey,
+                    width: 1,
+                    strokeAlign: BorderSide.strokeAlignOutside);
               }
             },
           ),
           iconColor: WidgetStateProperty.resolveWith<Color?>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
-                return  Colors.grey;
+                return Colors.grey;
               } else {
-                return  Colors.grey;
+                return Colors.grey;
               }
             },
           ),
           foregroundColor: WidgetStateProperty.resolveWith<Color?>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
-                return  Colors.grey;
+                return Colors.grey;
               } else {
-                return  Colors.grey;
+                return Colors.grey;
               }
             },
           ),
@@ -187,27 +217,27 @@ class AppThemeController extends GetxController {
           side: WidgetStateProperty.resolveWith<BorderSide?>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
-                return BorderSide(color:  Colors.grey, width: 1);
+                return BorderSide(color: Colors.grey, width: 1);
               } else {
-                return BorderSide(color:  Colors.grey, width: 1);
+                return BorderSide(color: Colors.grey, width: 1);
               }
             },
           ),
           iconColor: WidgetStateProperty.resolveWith<Color?>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
-                return  Colors.grey;
+                return Colors.grey;
               } else {
-                return  Colors.grey;
+                return Colors.grey;
               }
             },
           ),
           foregroundColor: WidgetStateProperty.resolveWith<Color?>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
-                return  Colors.grey;
+                return Colors.grey;
               } else {
-                return  Colors.grey;
+                return Colors.grey;
               }
             },
           ),
@@ -215,9 +245,9 @@ class AppThemeController extends GetxController {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-                foregroundColor:  Colors.white,
+                foregroundColor: Colors.white,
                 elevation: 0,
-                iconColor:  Colors.white,
+                iconColor: Colors.white,
                 shadowColor: Colors.transparent,
                 padding: EdgeInsets.all(10),
                 shape: RoundedRectangleBorder(
@@ -226,18 +256,18 @@ class AppThemeController extends GetxController {
           overlayColor: WidgetStateProperty.resolveWith<Color?>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
-                return  Colors.grey;
+                return Colors.grey;
               } else {
-                return  Colors.grey;
+                return Colors.grey;
               }
             },
           ),
           backgroundColor: WidgetStateProperty.resolveWith<Color?>(
             (Set<WidgetState> states) {
               if (states.contains(WidgetState.pressed)) {
-                return  Colors.grey;
+                return Colors.grey;
               } else {
-                return  Colors.grey;
+                return Colors.grey;
               }
             },
           ),
@@ -246,15 +276,13 @@ class AppThemeController extends GetxController {
     );
 
     return theme;
-}
+  }
 
   late Rx<ThemeData> currentTheme;
- 
 
   @override
   void onInit() {
-   
-    currentTheme = _setTheme().obs;
+    currentTheme = _setTheme(themes.first).obs;
     super.onInit();
   }
 
