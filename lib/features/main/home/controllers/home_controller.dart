@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:kipish_m/features/main/calendar/controllers/calendar_controller.dart';
+import 'package:kipish_m/utils/base_controller.dart';
 import 'package:kipish_m/utils/constants.dart';
 
-class HomeController extends GetxController {
+class HomeController extends BaseController {
   Rx<int> selected_item = (-100).obs;
   var title = "".obs;
   Future deleteControllers() async {
