@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppThemeData {
   int index;
@@ -48,7 +49,7 @@ class AppThemeController extends GetxController {
     _accent_color_dark2.value = Color(themeData.accent_color_dark2);
     final theme = ThemeData(
       useMaterial3: true,
-      fontFamily: 'Inter',
+      fontFamily: 'GolosText',
       canvasColor: Colors.white,
       scaffoldBackgroundColor: Colors.white,
       textTheme: const TextTheme(
@@ -104,25 +105,22 @@ class AppThemeController extends GetxController {
         errorMaxLines: 4,
         hoverColor: Colors.transparent,
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            const EdgeInsets.symmetric(vertical: 8),
         hintStyle: TextStyle(
-            fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w400),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
-          borderRadius: BorderRadius.circular(12),
+            fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w400,height: 0),
+      enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: main_dark),
+        )
+        ,
+        outlineBorder: BorderSide(color: main_dark),
+     border: UnderlineInputBorder(
+          borderSide: BorderSide(color: main_dark),
         ),
-        outlineBorder: BorderSide(color: Colors.grey),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
-          borderRadius: BorderRadius.circular(12),
+        disabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: main_dark),
         ),
-        disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue),
-          borderRadius: BorderRadius.circular(12),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: main_dark),
         ),
         errorStyle: TextStyle(
           color: Colors.red,

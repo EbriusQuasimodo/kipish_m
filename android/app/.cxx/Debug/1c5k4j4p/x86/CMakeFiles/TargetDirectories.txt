@@ -1,0 +1,2 @@
+/Users/ebrius/Проекты/Flutter/kipish_m/android/app/.cxx/Debug/1c5k4j4p/x86/CMakeFiles/edit_cache.dir
+/Users/ebrius/Проекты/Flutter/kipish_m/android/app/.cxx/Debug/1c5k4j4p/x86/CMakeFiles/rebuild_cache.dir
