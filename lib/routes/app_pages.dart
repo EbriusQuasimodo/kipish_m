@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
-import 'package:kipish_m/features/login/bindings/login_signin_binding.dart';
-import 'package:kipish_m/features/login/views/login_signin_view.dart';
+import 'package:kipish_m/features/enter/login/bindings/login_signin_binding.dart';
+import 'package:kipish_m/features/enter/login/views/login_signin_view.dart';
+import 'package:kipish_m/features/enter/reset_password/bindings/reset_password_binding.dart';
+import 'package:kipish_m/features/enter/reset_password/views/reset_password_view.dart';
 import 'package:kipish_m/features/main/home/bindings/home_binding.dart';
 import 'package:kipish_m/features/main/home/views/home_view.dart';
 import 'package:kipish_m/features/splash/bindings/splash_binding.dart';
@@ -30,7 +32,11 @@ class AppPages {
       page: () => LoginSigninView(),
       binding: LoginSigninBinding(),
     ),
-  
+    GetPage(
+      name: _Paths.RESET_PASSWORD,
+      page: () => ResetPasswordView(),
+      binding: ResetPasswordBinding(),
+    ),
     GetPage(
       name: _Paths.SPLASH,
       page: () => const SplashView(),

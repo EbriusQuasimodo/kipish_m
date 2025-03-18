@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kipish_m/features/login/controllers/login_singing_controller.dart';
+import 'package:kipish_m/features/enter/login/controllers/login_singing_controller.dart';
 import 'package:kipish_m/services/app_theme.dart';
 
 class StartView extends StatelessWidget {

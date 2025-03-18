@@ -7,12 +7,15 @@ abstract class Routes {
   static const LOGIN_SIGNIN = _Paths.LOGIN_SIGNIN;
 
   static const SPLASH = _Paths.SPLASH;
+  static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
   static const LOGIN_SIGNIN = '/login-signin';
+
+  static const RESET_PASSWORD = '/reset-password';
 
   static const SPLASH = '/';
 }

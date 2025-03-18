@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:kipish_m/features/login/controllers/login_singing_controller.dart';
+import 'package:kipish_m/features/enter/login/controllers/login_singing_controller.dart';
 
 
 class LoginSigninBinding extends Bindings {
