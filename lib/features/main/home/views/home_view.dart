@@ -1,8 +1,5 @@
-import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -26,7 +23,20 @@ class HomeView extends GetView<HomeController> {
         appBar: AppBar(
           scrolledUnderElevation: 0,
           backgroundColor: theme.main_light,
-          title: Text(controller.title.value,style: TextStyle(color: theme.main_dark,fontSize:  controller.selected_item.value == Constants.CALENDAR ? 20:32,fontWeight: FontWeight.w400),),
+          title: Text(
+            controller.title.value,
+            style: controller.selected_item.value == Constants.ROADMAPS
+                ? theme.heading1
+                : TextStyle(
+                    color: theme.main_dark,
+                    fontSize:
+                        controller.selected_item.value == Constants.CALENDAR
+                            ? 20
+                            : 32,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'GolosText',
+                  ),
+          ),
         ),
         body: SafeArea(
           child: Column(
@@ -60,7 +70,7 @@ class HomeView extends GetView<HomeController> {
                   child: Column(
                     children: [
                       Icon(
-                      TablerIcons.calendar_month,
+                        TablerIcons.calendar_month,
                         size: 16,
                         color:
                             controller.selected_item.value == Constants.CALENDAR

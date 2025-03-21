@@ -18,11 +18,15 @@ class HomeController extends BaseController {
     selected_item.value = p0;
 
     selected_item.refresh();
-//кастомная навигация из навбара
+    // кастомная навигация из навбара
     if (p0 == Constants.CALENDAR) {
       title.value = "Расписание";
     } else if (p0 == Constants.ROADMAPS) {
-      title.value = "Дорожные карты";
+      title.value = "ROAD MAP";
+    } else if (p0 == Constants.PRIORITIES) {
+      title.value = "Приоритеты";
+    } else if (p0 == Constants.NEWS) {
+      title.value = "Сообщество";
     }
   }
 

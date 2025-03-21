@@ -27,21 +27,75 @@ class AppThemeData {
 }
 
 class AppThemeController extends GetxController {
-   var themes = [AppThemeData(index: 0, name: 'Светлая', main_light: 0xFFFFFFFF, main_dark: 0xFF2B2B2B, accent_color: 0xFFE53838, accent_color_light: 0xFFF8F8F8, accent_color_dark: 0xFF8B8B8B, accent_color_dark2: 0xFFD9D9D9)].obs;
-   final _main_dark = Color(0x00000000).obs;
-   Color get main_dark => _main_dark.value;
-     final _main_light = Color(0x00000000).obs;
-   Color get main_light=> _main_light.value;
-     final _accent_color = Color(0x00000000).obs;
-   Color get accent_color => _accent_color.value;
-     final _accent_color_light = Color(0x00000000).obs;
-   Color get accent_color_light => _accent_color_light.value;
-     final _accent_color_dark = Color(0x00000000).obs;
-   Color get accent_color_dark => _accent_color_dark.value;
-     final _accent_color_dark2 = Color(0x00000000).obs;
-   Color get accent_color_dark2 => _accent_color_dark2.value;
+  var themes = [
+    AppThemeData(
+        index: 0,
+        name: 'Светлая',
+        main_light: 0xFFFFFFFF,
+        main_dark: 0xFF2B2B2B,
+        accent_color: 0xFFE53838,
+        accent_color_light: 0xFFF8F8F8,
+        accent_color_dark: 0xFF8B8B8B,
+        accent_color_dark2: 0xFFD9D9D9)
+  ].obs;
+  final _main_dark = Color(0x00000000).obs;
+  Color get main_dark => _main_dark.value;
+  final _main_light = Color(0x00000000).obs;
+  Color get main_light => _main_light.value;
+  final _accent_color = Color(0x00000000).obs;
+  Color get accent_color => _accent_color.value;
+  final _accent_color_light = Color(0x00000000).obs;
+  Color get accent_color_light => _accent_color_light.value;
+  final _accent_color_dark = Color(0x00000000).obs;
+  Color get accent_color_dark => _accent_color_dark.value;
+  final _accent_color_dark2 = Color(0x00000000).obs;
+  Color get accent_color_dark2 => _accent_color_dark2.value;
+
+  // Text Styles
+
+  // Heading 1 - Заголовок в стиле ROAD MAP
+  TextStyle get heading1 => TextStyle(
+        fontFamily: 'Uncage',
+        fontSize: 32,
+        fontWeight: FontWeight.w400,
+        color: main_dark,
+      );
+
+  // Main Text Regular - Текст в неактивном переключателе и описаниях
+  TextStyle get mainTextRegular => TextStyle(
+        fontFamily: 'GolosText',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: main_dark,
+        height: 1, // Межстрочный интервал
+      );
+
+  // Main Text Accent - Текст в кнопках с акцентным фоном
+  TextStyle get mainTextAccent => TextStyle(
+        fontFamily: 'GolosText',
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: main_light,
+      );
+
+  // Inactive Tab Text - Текст для неактивной вкладки
+  TextStyle get inactiveTabText => TextStyle(
+        fontFamily: 'GolosText',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: main_dark,
+      );
+
+  // Active Tab Text - Текст для активной вкладки
+  TextStyle get activeTabText => TextStyle(
+        fontFamily: 'GolosText',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: main_light,
+      );
+
   ThemeData _setTheme(AppThemeData themeData) {
-       _main_dark.value = Color(themeData.main_dark);
+    _main_dark.value = Color(themeData.main_dark);
     _main_light.value = Color(themeData.main_light);
     _accent_color.value = Color(themeData.accent_color);
     _accent_color_light.value = Color(themeData.accent_color_light);
@@ -104,16 +158,17 @@ class AppThemeController extends GetxController {
         isDense: true,
         errorMaxLines: 4,
         hoverColor: Colors.transparent,
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 8),
+        contentPadding: const EdgeInsets.symmetric(vertical: 8),
         hintStyle: TextStyle(
-            fontSize: 16, color: Colors.grey, fontWeight: FontWeight.w400,height: 0),
-      enabledBorder: UnderlineInputBorder(
+            fontSize: 16,
+            color: Colors.grey,
+            fontWeight: FontWeight.w400,
+            height: 0),
+        enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: main_dark),
-        )
-        ,
+        ),
         outlineBorder: BorderSide(color: main_dark),
-     border: UnderlineInputBorder(
+        border: UnderlineInputBorder(
           borderSide: BorderSide(color: main_dark),
         ),
         disabledBorder: UnderlineInputBorder(
