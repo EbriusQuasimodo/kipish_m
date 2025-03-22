@@ -1,9 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppThemeData {
   int index;
@@ -53,11 +49,20 @@ class AppThemeController extends GetxController {
 
   // Text Styles
 
-  // Heading 1 - Заголовок в стиле ROAD MAP
+  // Heading 1 - Заголовок главных экранов
   TextStyle get heading1 => TextStyle(
         fontFamily: 'Uncage',
         fontSize: 32,
         fontWeight: FontWeight.w400,
+        color: main_dark,
+      );
+
+  // Heading 2 - для заголовков экранов
+  TextStyle get heading2 => TextStyle(
+        fontFamily: 'GolosText',
+        fontSize: 24,
+        fontWeight: FontWeight
+            .w600, // w500 по фигме, но по визуалу w600 TODO: исправить при получении шрифтов
         color: main_dark,
       );
 
@@ -92,6 +97,24 @@ class AppThemeController extends GetxController {
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: main_light,
+      );
+
+  // Hint Text Accent - для заголовков и кнопок в инструкции
+  TextStyle get hintTextAccent => TextStyle(
+        fontFamily: 'GolosText',
+        fontSize: 13,
+        fontWeight: FontWeight
+            .w600, // w500 по фигме, но по визуалу w600 TODO: исправить при получении шрифтов
+        color: main_dark,
+      );
+
+// Hint Text Regular - для текста в инструкции
+  TextStyle get hintTextRegular => TextStyle(
+        fontFamily: 'GolosText',
+        fontSize: 13,
+        fontWeight: FontWeight.w400,
+        color: main_dark,
+        height: 1,
       );
 
   ThemeData _setTheme(AppThemeData themeData) {

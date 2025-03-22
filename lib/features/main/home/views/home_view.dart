@@ -1,10 +1,7 @@
-import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
+import 'package:kipish_m/features/main/create_goal/views/create_goal_view.dart';
 import 'package:kipish_m/features/main/home/controllers/home_controller.dart';
 import 'package:kipish_m/features/main/home/widgets/home_pager.dart';
 import 'package:kipish_m/services/app_theme.dart';
@@ -20,22 +17,33 @@ class HomeView extends GetView<HomeController> {
     return Obx(() {
       return Scaffold(
         resizeToAvoidBottomInset: false,
+        // Единый AppBar для всех состояний
         appBar: AppBar(
           scrolledUnderElevation: 0,
           backgroundColor: theme.main_light,
+          // Кнопка назад только для экрана создания цели
+          leading: controller.isCreatingGoal.value
+              ? GestureDetector(
+                  onTap: () => controller.exitCreateGoalMode(),
+                  child: Icon(TablerIcons.chevron_left,
+                      color: theme.main_dark, size: 28),
+                )
+              : null,
           title: Text(
             controller.title.value,
-            style: controller.selected_item.value == Constants.ROADMAPS
-                ? theme.heading1
-                : TextStyle(
-                    color: theme.main_dark,
-                    fontSize:
-                        controller.selected_item.value == Constants.CALENDAR
-                            ? 20
-                            : 32,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'GolosText',
-                  ),
+            style: controller.isCreatingGoal.value
+                ? theme.heading2
+                : (controller.selected_item.value == Constants.ROADMAPS
+                    ? theme.heading1
+                    : TextStyle(
+                        color: theme.main_dark,
+                        fontSize:
+                            controller.selected_item.value == Constants.CALENDAR
+                                ? 20
+                                : 32,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'GolosText',
+                      )),
           ),
         ),
         body: SafeArea(
@@ -48,7 +56,17 @@ class HomeView extends GetView<HomeController> {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      const HomePager(),
+                      // Используем IndexedStack для переключения между экранами
+                      IndexedStack(
+                        index: controller.isCreatingGoal.value ? 1 : 0,
+                        children: [
+                          // Основной контент приложения
+                          const HomePager(),
+
+                          // Экран создания цели
+                          const CreateGoalView(),
+                        ],
+                      ),
                     ],
                   ),
                 ),

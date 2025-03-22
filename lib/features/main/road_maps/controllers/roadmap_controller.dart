@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:kipish_m/features/main/home/controllers/home_controller.dart';
 import 'package:kipish_m/utils/base_controller.dart';
 
 class RoadmapController extends BaseController {
@@ -29,16 +30,12 @@ class RoadmapController extends BaseController {
   // Метод для создания новой цели
   void createGoal() {
     logger.debug('RoadmapController: Нажата кнопка "Создать цель"');
-    // В будущем здесь будет логика создания цели
-    // Например, открытие модального окна или навигация на другой экран
 
-    // Временный диалог для демонстрации
-    Get.defaultDialog(
-      title: 'Создание цели',
-      middleText: 'Эта функция находится в разработке.',
-      textConfirm: 'OK',
-      onConfirm: () => Get.back(),
-    );
+    // Получаем экземпляр HomeController для клиент-навигации
+    final homeController = Get.find<HomeController>();
+
+    // Вызываем метод для перехода в режим создания цели
+    homeController.showCreateGoalScreen();
   }
 
   @override

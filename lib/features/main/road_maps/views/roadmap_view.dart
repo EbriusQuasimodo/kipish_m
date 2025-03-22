@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kipish_m/features/main/road_maps/controllers/roadmap_controller.dart';
 import 'package:kipish_m/services/app_theme.dart';
+import 'package:kipish_m/widgets/accent_button.dart';
 
 class RoadmapView extends GetView<RoadmapController> {
   const RoadmapView({super.key});
@@ -102,28 +103,9 @@ class RoadmapView extends GetView<RoadmapController> {
         SizedBox(height: 16.h),
 
         // Кнопка "Создать цель"
-        SizedBox(
-          height: 36.h, // Задаем фиксированную высоту кнопки
-          child: ElevatedButton(
-            onPressed: () => controller.createGoal(),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: theme.accent_color,
-              foregroundColor: theme.main_light,
-              // Форма "терминатор" с максимальным скруглением
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50.r),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              // Минимальный размер кнопки для уменьшения внутреннего отступа
-              minimumSize: Size(0, 0),
-              // Отключаем tapTargetSize для меньшей внутренней высоты
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            ),
-            child: Text(
-              'Создать цель',
-              style: theme.mainTextAccent,
-            ),
-          ),
+        AccentButton(
+          text: 'Создать цель',
+          onPressed: () => controller.createGoal(),
         ),
       ],
     );
