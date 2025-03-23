@@ -37,9 +37,12 @@ flutter:
     - assets/fonts/
     
   fonts:
-    - family: GolosText
+    - family: GolosText_Regular
       fonts:
-        - asset: assets/fonts/GolosText-VariableFont_wght.ttf
+        - asset: assets/fonts/Golos-Text_Regular.ttf
+    - family: GolosText_Medium
+      fonts:
+        - asset: assets/fonts/Golos-Text_Medium.ttf
     - family: Uncage
       fonts:
         - asset: assets/fonts/uncage.ttf

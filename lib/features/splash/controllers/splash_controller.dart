@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:kipish_m/routes/app_pages.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -11,7 +10,7 @@ class SplashController extends GetxController {
     super.onInit();
   }
 
- @override
+  @override
   void onReady() {
     super.onReady();
     // var queryParameters = <String, String>{};
@@ -37,9 +36,10 @@ class SplashController extends GetxController {
     //   // database.putUser(user);
     //   Get.offAllNamed(Routes.HOME, arguments: [1, queryParameters]);
     // }
-        Get.offAllNamed(Routes.HOME, );
+    Get.offAllNamed(
+      Routes.HOME,
+    );
   }
-
 
   @override
   void onClose() {

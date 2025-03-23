@@ -59,28 +59,52 @@ class AppThemeController extends GetxController {
 
   // Heading 2 - для заголовков экранов
   TextStyle get heading2 => TextStyle(
-        fontFamily: 'GolosText',
+        fontFamily: 'GolosText_Medium',
         fontSize: 24,
-        fontWeight: FontWeight
-            .w600, // w500 по фигме, но по визуалу w600 TODO: исправить при получении шрифтов
+        fontWeight: FontWeight.w500,
         color: main_dark,
       );
 
-  // Main Text Regular - Текст в неактивном переключателе и описаниях
-  TextStyle get mainTextRegular => TextStyle(
-        fontFamily: 'GolosText',
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
+  // Heading 3 - для заголовков экранов
+  TextStyle get heading3 => TextStyle(
+        fontFamily: 'GolosText_Medium',
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
         color: main_dark,
-        height: 1, // Межстрочный интервал
       );
 
   // Main Text Accent - Текст в кнопках с акцентным фоном
   TextStyle get mainTextAccent => TextStyle(
-        fontFamily: 'GolosText',
+        fontFamily: 'GolosText_Medium',
         fontSize: 16,
         fontWeight: FontWeight.w500,
         color: main_light,
+      );
+
+  // Main Text Regular - Текст в неактивном переключателе и описаниях
+  TextStyle get mainTextRegular => TextStyle(
+        fontFamily: 'GolosText_Regular',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: main_dark,
+        height: 1,
+      );
+
+  // Hint Text Accent - для заголовков и кнопок в инструкции
+  TextStyle get hintTextAccent => TextStyle(
+        fontFamily: 'GolosText_Medium',
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        color: main_dark,
+      );
+
+// Hint Text Regular - для текста в инструкции
+  TextStyle get hintTextRegular => TextStyle(
+        fontFamily: 'GolosText_Regular',
+        fontSize: 13,
+        fontWeight: FontWeight.w400,
+        color: main_dark,
+        height: 1,
       );
 
   // Inactive Tab Text - Текст для неактивной вкладки
@@ -97,24 +121,6 @@ class AppThemeController extends GetxController {
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: main_light,
-      );
-
-  // Hint Text Accent - для заголовков и кнопок в инструкции
-  TextStyle get hintTextAccent => TextStyle(
-        fontFamily: 'GolosText',
-        fontSize: 13,
-        fontWeight: FontWeight
-            .w600, // w500 по фигме, но по визуалу w600 TODO: исправить при получении шрифтов
-        color: main_dark,
-      );
-
-// Hint Text Regular - для текста в инструкции
-  TextStyle get hintTextRegular => TextStyle(
-        fontFamily: 'GolosText',
-        fontSize: 13,
-        fontWeight: FontWeight.w400,
-        color: main_dark,
-        height: 1,
       );
 
   ThemeData _setTheme(AppThemeData themeData) {

@@ -3,6 +3,8 @@ import 'package:kipish_m/features/enter/login/bindings/login_signin_binding.dart
 import 'package:kipish_m/features/enter/login/views/login_signin_view.dart';
 import 'package:kipish_m/features/enter/reset_password/bindings/reset_password_binding.dart';
 import 'package:kipish_m/features/enter/reset_password/views/reset_password_view.dart';
+import 'package:kipish_m/features/main/create_goal/bindings/create_goal_binding.dart';
+import 'package:kipish_m/features/main/create_goal/views/create_goal_view.dart';
 import 'package:kipish_m/features/main/home/bindings/home_binding.dart';
 import 'package:kipish_m/features/main/home/views/home_view.dart';
 import 'package:kipish_m/features/splash/bindings/splash_binding.dart';
@@ -40,6 +42,12 @@ class AppPages {
       name: _Paths.SPLASH,
       page: () => const SplashView(),
       binding: SplashBinding(),
+    ),
+    GetPage(
+      name: _Paths.CREATE_GOAL,
+      page: () => const CreateGoalView(),
+      binding: CreateGoalBinding(),
+      //transition: Transition.rightToLeft,
     ),
   ];
 }

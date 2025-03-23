@@ -100,7 +100,7 @@ class RoadmapView extends GetView<RoadmapController> {
           style: theme.mainTextRegular,
         ),
 
-        SizedBox(height: 16.h),
+        SizedBox(height: 20.h),
 
         // Кнопка "Создать цель"
         AccentButton(

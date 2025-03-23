@@ -13,56 +13,64 @@ class CreateGoalView extends GetView<CreateGoalController> {
     // Получаем доступ к теме
     final theme = Get.find<AppThemeController>();
 
-    // Убедимся, что контроллер инициализирован
-    if (!Get.isRegistered<CreateGoalController>()) {
-      Get.put(CreateGoalController());
-    }
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Блок инструкции, весь кликабельный
-          GestureDetector(
-            onTap: controller.toggleInstruction,
-            child: Obx(() => _buildInstructionBlock(theme)),
-          ),
-
-          const SizedBox(height: 20),
-
-          // Кнопки создания цели
-          Center(
-            child: Column(
-              children: [
-                // Кнопка создания цели по методике SMART LEAF
-                SizedBox(
-                  width: context.width,
-                  child: AccentButton(
-                    text: 'Задать цель по методике SMART LEAF',
-                    onPressed: () {}, // Пустая функция вместо null
-                    height: 36,
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-
-                // Кнопка самостоятельного задания цели
-                Text(
-                  'Внести самостоятельно',
-                  style: theme.mainTextAccent.copyWith(
-                    color: theme.accent_color_dark,
-                  ),
-                ),
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: theme.main_light,
+        title: Text('Новая цель', style: theme.heading2),
+        leading: GestureDetector(
+          onTap: () => Get.back(),
+          child:
+              Icon(TablerIcons.chevron_left, color: theme.main_dark, size: 28),
+        ),
+        elevation: 0,
+      ),
+      backgroundColor: theme.main_light,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Блок инструкции, весь кликабельный
+            GestureDetector(
+              onTap: controller.toggleInstruction,
+              child: Obx(() => _buildInstructionBlock(theme)),
             ),
-          ),
-        ],
+
+            const SizedBox(height: 20),
+
+            // Кнопки создания цели
+            Center(
+              child: Column(
+                children: [
+                  // Кнопка создания цели по методике SMART LEAF
+                  SizedBox(
+                    width: context.width,
+                    child: AccentButton(
+                      text: 'Задать цель по методике SMART LEAF',
+                      onPressed: () {}, // Пустая функция вместо null
+                      height: 36,
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // Кнопка самостоятельного задания цели
+                  Text(
+                    'Внести самостоятельно',
+                    style: theme.mainTextAccent.copyWith(
+                      color: theme.accent_color_dark,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  // Метод для построения блока инструкции (остается без изменений)
+  // Метод для построения блока инструкции
   Widget _buildInstructionBlock(AppThemeController theme) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -78,8 +86,8 @@ class CreateGoalView extends GetView<CreateGoalController> {
               // PNG иконка из ассетов
               Image.asset(
                 'assets/images/kipish_icon.png',
-                width: 24,
-                height: 24,
+                width: 18,
+                height: 18,
                 color: theme.accent_color,
               ),
 
