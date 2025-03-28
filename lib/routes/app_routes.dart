@@ -10,6 +10,7 @@ abstract class Routes {
   static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
 
   static const CREATE_GOAL = _Paths.CREATE_GOAL;
+  static const SMART_LEAF_GOAL = _Paths.SMART_LEAF_GOAL;
 }
 
 abstract class _Paths {
@@ -22,4 +23,5 @@ abstract class _Paths {
   static const SPLASH = '/';
 
   static const CREATE_GOAL = '/create-goal';
+  static const SMART_LEAF_GOAL = '/smart-leaf-goal';
 }

@@ -7,6 +7,8 @@ import 'package:kipish_m/features/main/create_goal/bindings/create_goal_binding.
 import 'package:kipish_m/features/main/create_goal/views/create_goal_view.dart';
 import 'package:kipish_m/features/main/home/bindings/home_binding.dart';
 import 'package:kipish_m/features/main/home/views/home_view.dart';
+import 'package:kipish_m/features/main/smart_leaf_goal/bindings/smart_leaf_goal_binding.dart';
+import 'package:kipish_m/features/main/smart_leaf_goal/views/smart_leaf_goal_view.dart';
 import 'package:kipish_m/features/splash/bindings/splash_binding.dart';
 import 'package:kipish_m/features/splash/views/splash_view.dart';
 
@@ -47,7 +49,11 @@ class AppPages {
       name: _Paths.CREATE_GOAL,
       page: () => const CreateGoalView(),
       binding: CreateGoalBinding(),
-      //transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: _Paths.SMART_LEAF_GOAL,
+      page: () => const SmartLeafGoalView(),
+      binding: SmartLeafGoalBinding(),
     ),
   ];
 }

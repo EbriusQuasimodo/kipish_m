@@ -1,14 +1,14 @@
-// lib/widgets/accent_button.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kipish_m/services/app_theme.dart';
 
 class AccentButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Color? backgroundColor;
   final Color? textColor;
   final double? height;
+  final bool isEnabled;
 
   const AccentButton({
     Key? key,
@@ -17,22 +17,33 @@ class AccentButton extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     this.height,
+    this.isEnabled = true,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final theme = Get.find<AppThemeController>();
 
+    // Определяем цвета в зависимости от состояния
+    final bgColor = isEnabled
+        ? (backgroundColor ?? theme.accent_color)
+        : theme.accent_color_light;
+
+    final txtColor =
+        isEnabled ? (textColor ?? theme.main_light) : theme.accent_color_dark;
+
     return SizedBox(
       height: height ?? 36,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: isEnabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
-          backgroundColor: backgroundColor ?? theme.accent_color,
-          foregroundColor: textColor ?? theme.main_light,
-          // Форма "терминатор" с максимальным скруглением
+          backgroundColor: bgColor,
+          foregroundColor: txtColor,
+          disabledBackgroundColor: theme.accent_color_light,
+          disabledForegroundColor: theme.accent_color_dark,
+          // Форма с максимальным скруглением
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(40),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 20),
           // Минимальный размер кнопки для уменьшения внутреннего отступа
@@ -42,7 +53,7 @@ class AccentButton extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: theme.mainTextAccent,
+          style: theme.mainTextAccent.copyWith(color: txtColor),
         ),
       ),
     );

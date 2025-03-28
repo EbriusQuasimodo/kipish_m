@@ -104,12 +104,12 @@ class AppThemeController extends GetxController {
         fontSize: 13,
         fontWeight: FontWeight.w400,
         color: main_dark,
-        height: 1,
+        height: 1.1,
       );
 
   // Inactive Tab Text - Текст для неактивной вкладки
   TextStyle get inactiveTabText => TextStyle(
-        fontFamily: 'GolosText',
+        fontFamily: 'GolosText_Regular',
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: main_dark,
@@ -117,7 +117,7 @@ class AppThemeController extends GetxController {
 
   // Active Tab Text - Текст для активной вкладки
   TextStyle get activeTabText => TextStyle(
-        fontFamily: 'GolosText',
+        fontFamily: 'GolosText_Regular',
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: main_light,

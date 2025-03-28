@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import 'package:get/get.dart';
 import 'package:kipish_m/features/main/create_goal/controllers/create_goal_controller.dart';
+import 'package:kipish_m/routes/app_pages.dart';
 import 'package:kipish_m/services/app_theme.dart';
 import 'package:kipish_m/widgets/accent_button.dart';
+import 'package:kipish_m/widgets/instruction_block.dart';
 
 class CreateGoalView extends GetView<CreateGoalController> {
   const CreateGoalView({super.key});
@@ -16,24 +18,30 @@ class CreateGoalView extends GetView<CreateGoalController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.main_light,
+        titleSpacing: 0,
         title: Text('Новая цель', style: theme.heading2),
         leading: GestureDetector(
           onTap: () => Get.back(),
           child:
-              Icon(TablerIcons.chevron_left, color: theme.main_dark, size: 28),
+              Icon(TablerIcons.chevron_left, color: theme.main_dark, size: 35),
         ),
         elevation: 0,
       ),
       backgroundColor: theme.main_light,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Блок инструкции, весь кликабельный
-            GestureDetector(
-              onTap: controller.toggleInstruction,
-              child: Obx(() => _buildInstructionBlock(theme)),
+            // Блок инструкции
+            InstructionBlock(
+              isExpanded: controller.isInstructionExpanded,
+              onToggle: controller.toggleInstruction,
+              instructionText: 'Цели добавляются в статистику дорожной карты. '
+                  'Обозначьте цель на этот год, опишите контрольные точки её достижения и '
+                  'отслеживайте прогресс выполнения на общей карте. Помните, что цель должна быть '
+                  'реалистичная, конкретная, измеримая и имела дедлайн, также помните о легальности, '
+                  'экологичности и амбициозности',
             ),
 
             const SizedBox(height: 20),
@@ -47,8 +55,9 @@ class CreateGoalView extends GetView<CreateGoalController> {
                     width: context.width,
                     child: AccentButton(
                       text: 'Задать цель по методике SMART LEAF',
-                      onPressed: () {}, // Пустая функция вместо null
+                      onPressed: () => Get.toNamed(Routes.SMART_LEAF_GOAL),
                       height: 36,
+                      backgroundColor: theme.accent_color,
                     ),
                   ),
 
@@ -66,74 +75,6 @@ class CreateGoalView extends GetView<CreateGoalController> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  // Метод для построения блока инструкции
-  Widget _buildInstructionBlock(AppThemeController theme) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Color(theme.themes[0].accent_color_dark2),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              // PNG иконка из ассетов
-              Image.asset(
-                'assets/images/kipish_icon.png',
-                width: 18,
-                height: 18,
-                color: theme.accent_color,
-              ),
-
-              const SizedBox(width: 8),
-
-              Text(
-                'Инструкция',
-                style: theme.hintTextAccent,
-              ),
-
-              const Spacer(),
-
-              // Визуальная кнопка сворачивания/разворачивания
-              Row(
-                children: [
-                  Text(
-                    controller.isInstructionExpanded.value
-                        ? 'Свернуть'
-                        : 'Развернуть',
-                    style: theme.hintTextAccent,
-                  ),
-                  const SizedBox(width: 4),
-                  Icon(
-                    controller.isInstructionExpanded.value
-                        ? TablerIcons.chevron_up
-                        : TablerIcons.chevron_down,
-                    color: theme.main_dark,
-                  ),
-                ],
-              ),
-            ],
-          ),
-
-          // Показываем текст инструкции только если она развернута
-          if (controller.isInstructionExpanded.value) ...[
-            const SizedBox(height: 8),
-            Text(
-              'Цели добавляются в статистику дорожной карты. '
-              'Обозначьте цель на этот год, опишите контрольные точки её достижения и '
-              'отслеживайте прогресс выполнения на общей карте. Помните, что цель должна быть '
-              'реалистичная, конкретная, измеримая и имела дедлайн, также помните о легальности, '
-              'экологичности и амбициозности',
-              style: theme.hintTextRegular,
-            ),
-          ],
-        ],
       ),
     );
   }

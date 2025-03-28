@@ -45,7 +45,8 @@ class RoadmapView extends GetView<RoadmapController> {
                         'прогресс',
                         style: controller.activeTab.value == 0
                             ? theme.activeTabText
-                            : theme.inactiveTabText,
+                            : theme
+                                .inactiveTabText, //TODO: Убратть эти стили и заменить
                       ),
                     ),
                   )),
