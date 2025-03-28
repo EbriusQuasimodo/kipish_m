@@ -9,6 +9,7 @@ class SelectField extends StatelessWidget {
   final TextEditingController controller;
   final List<String> options;
   final String? Function(String?)? validator;
+  final double bottomPadding;
 
   const SelectField({
     Key? key,
@@ -17,43 +18,46 @@ class SelectField extends StatelessWidget {
     required this.controller,
     required this.options,
     this.validator,
+    this.bottomPadding = 0,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final theme = Get.find<AppThemeController>();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: theme.mainTextAccent.copyWith(color: theme.main_dark),
-        ),
-        const SizedBox(height: 2),
-        InkWell(
-          onTap: () => _showOptions(context),
-          child: TextField(
-            controller: controller,
-            enabled: false,
-            style:
-                theme.mainTextRegular.copyWith(color: theme.accent_color_dark),
-            decoration: InputDecoration(
-              hintText: hintText,
-              hintStyle: theme.mainTextRegular
+    return Padding(
+      padding: EdgeInsets.only(bottom: bottomPadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: theme.mainTextAccent.copyWith(color: theme.main_dark),
+          ),
+          const SizedBox(height: 2),
+          InkWell(
+            onTap: () => _showOptions(context),
+            child: TextField(
+              controller: controller,
+              enabled: false,
+              style: theme.mainTextRegular
                   .copyWith(color: theme.accent_color_dark),
-              disabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: theme.main_dark),
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintStyle: theme.mainTextRegular
+                    .copyWith(color: theme.accent_color_dark),
+                disabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: theme.main_dark),
+                ),
+                suffixIcon:
+                    Icon(TablerIcons.chevron_down, color: theme.main_dark),
+                contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                isDense: true,
               ),
-              suffixIcon:
-                  Icon(TablerIcons.chevron_down, color: theme.main_dark),
-              contentPadding: const EdgeInsets.symmetric(vertical: 12),
-              isDense: true,
             ),
           ),
-        ),
-        const SizedBox(height: 32),
-      ],
+        ],
+      ),
     );
   }
 

@@ -5,6 +5,8 @@ import 'package:kipish_m/features/enter/reset_password/bindings/reset_password_b
 import 'package:kipish_m/features/enter/reset_password/views/reset_password_view.dart';
 import 'package:kipish_m/features/main/create_goal/bindings/create_goal_binding.dart';
 import 'package:kipish_m/features/main/create_goal/views/create_goal_view.dart';
+import 'package:kipish_m/features/main/goal_checkpoints/bindings/goal_checkpoints_binding.dart';
+import 'package:kipish_m/features/main/goal_checkpoints/views/goal_checkpoints_view.dart';
 import 'package:kipish_m/features/main/home/bindings/home_binding.dart';
 import 'package:kipish_m/features/main/home/views/home_view.dart';
 import 'package:kipish_m/features/main/smart_leaf_goal/bindings/smart_leaf_goal_binding.dart';
@@ -54,6 +56,11 @@ class AppPages {
       name: _Paths.SMART_LEAF_GOAL,
       page: () => const SmartLeafGoalView(),
       binding: SmartLeafGoalBinding(),
+    ),
+    GetPage(
+      name: _Paths.GOAL_CHECKPOINTS,
+      page: () => const GoalCheckpointsView(),
+      binding: GoalCheckpointsBinding(),
     ),
   ];
 }

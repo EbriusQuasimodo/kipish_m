@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kipish_m/routes/app_pages.dart';
 import 'package:kipish_m/utils/base_controller.dart';
 
 class SmartLeafGoalController extends BaseController {
@@ -137,18 +138,10 @@ class SmartLeafGoalController extends BaseController {
   // Метод для перехода к контрольным точкам
   void goToCheckpoints() {
     if (formKey.currentState?.validate() ?? false) {
-      // TODO: Реализовать сохранение данных и переход к следующему экрану
       logger.debug('Form validated, ready to proceed to checkpoints');
 
-      // Здесь будет переход к следующему экрану
-      // Get.toNamed(Routes.GOAL_CHECKPOINTS);
-
-      // Пока просто показываем сообщение об успехе
-      Get.snackbar(
-        'Успех',
-        'Цель сохранена, переход к контрольным точкам',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      // Переходим к экрану контрольных точек
+      Get.toNamed(Routes.GOAL_CHECKPOINTS);
     } else {
       logger.debug('Form validation failed');
       Get.snackbar(

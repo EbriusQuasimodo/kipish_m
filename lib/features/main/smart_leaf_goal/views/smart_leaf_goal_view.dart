@@ -51,6 +51,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 label: 'Краткое название цели',
                 hint: 'Введите заголовок цели',
                 controller: controller.titleController.value,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -58,6 +59,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'Опишите четко, что именно вы хотите достичь',
                 controller: controller.specificController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -65,6 +67,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'Как вы будете измерять прогресс и успех?',
                 controller: controller.measurableController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -72,6 +75,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'Почему эта цель реалистична для вас?',
                 controller: controller.achievableController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -79,6 +83,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'Почему эта цель важна для вас сейчас?',
                 controller: controller.relevantController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -86,6 +91,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'Укажите временные рамки для достижения цели',
                 controller: controller.timeController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -93,6 +99,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'Подтвердите, что цель соответствует законам',
                 controller: controller.legalController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -100,6 +107,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'Опишите, как цель соответствует этическим нормам',
                 controller: controller.ethicalController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -107,6 +115,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'С кем согласована эта цель?',
                 controller: controller.agreedController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               FormTextField(
@@ -114,6 +123,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 hint: 'Как вы можете адаптировать цель при необходимости?',
                 controller: controller.flexibleController.value,
                 multiline: true,
+                bottomPadding: 16,
               ),
 
               // Выбор даты достижения цели
@@ -122,6 +132,8 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 controller: controller.deadlineController.value,
               ),
 
+              SizedBox(height: 16),
+
               // Выбор сферы жизни
               SelectField(
                 label: 'Соотнесите цель со сферой жизни',
@@ -129,6 +141,8 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                 controller: controller.lifeSphereController.value,
                 options: controller.lifeSpheres,
               ),
+
+              SizedBox(height: 16),
 
               // Кнопка для перехода к контрольным точкам
               Center(
@@ -144,7 +158,7 @@ class SmartLeafGoalView extends GetView<SmartLeafGoalController> {
                       ),
                     )),
               ),
-              SizedBox(height: 32),
+              SizedBox(height: 16),
             ],
           ),
         ),

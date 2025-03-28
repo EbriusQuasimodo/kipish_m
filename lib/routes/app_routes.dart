@@ -11,6 +11,7 @@ abstract class Routes {
 
   static const CREATE_GOAL = _Paths.CREATE_GOAL;
   static const SMART_LEAF_GOAL = _Paths.SMART_LEAF_GOAL;
+  static const GOAL_CHECKPOINTS = _Paths.GOAL_CHECKPOINTS;
 }
 
 abstract class _Paths {
@@ -24,4 +25,5 @@ abstract class _Paths {
 
   static const CREATE_GOAL = '/create-goal';
   static const SMART_LEAF_GOAL = '/smart-leaf-goal';
+  static const GOAL_CHECKPOINTS = '/goal-checkpoints';
 }

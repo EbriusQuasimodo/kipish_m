@@ -6,7 +6,6 @@ class RoadmapBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<RoadmapController>(
       () => RoadmapController(),
-      fenix: true, // Сохраняет экземпляр, пока он нужен TODO: обусдить с Настей
     );
   }
 }
